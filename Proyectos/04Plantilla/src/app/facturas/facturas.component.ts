@@ -18,7 +18,20 @@ export class FacturasComponent implements OnInit {
     this.facturaServicio.todos().subscribe((data: IFactura[]) => {
       this.listafacturas = data;
     });
+    //2
+    this.cargatabla();
   }
-
-  eliminar(idFactura) {}
+  //1
+  cargatabla() {
+    this.facturaServicio.todos().subscribe((data) => {
+      this.listafacturas = data;
+    });
+  }
+  //eliminar(idFactura) {}
+  eliminar(idFactura:number) {
+    this.facturaServicio.eliminar(idFactura).subscribe((data) => {
+      this.cargatabla();
+    });
+  }
 }
+
